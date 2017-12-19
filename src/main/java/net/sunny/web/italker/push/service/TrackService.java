@@ -109,6 +109,7 @@ public class TrackService extends BaseService {
 
         for (Track track : tracks) {
             TrackCard trackCard = new TrackCard(track);
+            // 取动态的额外信息（点赞数等）
             long complimentCount = TrackFactory.getComplimentCount(track.getId());
             long tauntCount = TrackFactory.getTauntCount(track.getId());
             long commentCount = TrackFactory.getCommentCount(track.getId());
@@ -116,6 +117,7 @@ public class TrackService extends BaseService {
             trackCard.setTauntCount(tauntCount);
             trackCard.setCommentCount(commentCount);
 
+            // 判断用户是否已经对这条动态点过赞/踩
             Compliment compliment = ComplimentFactory.findByIds(track.getId(), self.getId());
             Taunt taunt = TauntFactory.findByIds(track.getId(), self.getId());
             trackCard.setCompliment(compliment != null);

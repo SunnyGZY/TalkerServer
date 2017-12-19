@@ -72,6 +72,8 @@
                  class="net.sunny.web.italker.push.bean.db.track.Compliment"/>
         <mapping package="net.sunny.web.italker.push.bean.db"
                  class="net.sunny.web.italker.push.bean.db.track.Taunt"/>
+        <mapping package="net.sunny.web.italker.push.bean.db"
+                 class="net.sunny.web.italker.push.bean.db.Feedback"/>
 
     </session-factory>
 </hibernate-configuration>
