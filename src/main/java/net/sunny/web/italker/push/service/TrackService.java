@@ -48,7 +48,8 @@ public class TrackService extends BaseService {
             return ResponseModel.buildParameterError();
 
         track = TrackFactory.add(self, model);
-
+        TrackCard trackCard = new TrackCard(track);
+        trackCard.setState(Track.UPLOADED);
         return ResponseModel.buildOk(new TrackCard(track));
     }
 

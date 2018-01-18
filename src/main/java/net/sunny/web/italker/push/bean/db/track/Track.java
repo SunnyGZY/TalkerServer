@@ -27,6 +27,9 @@ public class Track {
     public static int IN_SCHOOL = 0x01;
     public static int IN_FRIEND = 0x02;
 
+    public static int UPLOADING = 0x01;
+    public static int UPLOADED = 0x02;
+
     @Id
     @PrimaryKeyJoinColumn
     //Id由客户端负责生成

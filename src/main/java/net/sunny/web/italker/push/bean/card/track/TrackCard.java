@@ -42,6 +42,8 @@ public class TrackCard {
     private boolean isCompliment;
     @Expose
     private boolean isTaunt;
+    @Expose
+    private int state;
 
     public TrackCard(Track track) {
 
@@ -156,5 +158,13 @@ public class TrackCard {
 
     public void setTaunt(boolean taunt) {
         isTaunt = taunt;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }

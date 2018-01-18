@@ -26,6 +26,12 @@ public class TrackCreateModel {
     @Expose
     private int jurisdiction;
 
+    @Expose
+    private String videoUrl;
+
+    @Expose
+    private int state;
+
     public String getId() {
         return id;
     }
@@ -64,6 +70,22 @@ public class TrackCreateModel {
 
     public void setJurisdiction(int jurisdiction) {
         this.jurisdiction = jurisdiction;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
     public static boolean check(TrackCreateModel model) {
