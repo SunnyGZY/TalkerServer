@@ -44,6 +44,8 @@ public class TrackCard {
     private boolean isTaunt;
     @Expose
     private int state;
+    @Expose
+    private String videoUrl;
 
     public TrackCard(Track track) {
 
@@ -51,6 +53,7 @@ public class TrackCard {
         this.content = track.getContent();
         this.jurisdiction = track.getJurisdiction();
         this.type = track.getType();
+        this.videoUrl = track.getVideoUrl();
 
         Hib.queryOnly(session -> {
             session.load(track, track.getId());
@@ -166,5 +169,13 @@ public class TrackCard {
 
     public void setState(int state) {
         this.state = state;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
     }
 }

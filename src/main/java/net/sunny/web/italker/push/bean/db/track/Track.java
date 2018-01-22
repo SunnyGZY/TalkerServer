@@ -53,8 +53,6 @@ public class Track {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Photo> photos = new HashSet<>();
 
-    // TODO: 17-8-8 视频暂时未做
-
     @CreationTimestamp
     @Column(nullable = false)
     private LocalDateTime createAt = LocalDateTime.now();
@@ -65,6 +63,9 @@ public class Track {
     // 动态显示的权限
     @Column
     private int jurisdiction;
+
+    @Column
+    private String videoUrl;
 
     public Track() {
     }
@@ -129,6 +130,14 @@ public class Track {
         return createAt;
     }
 
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
+
     public Track(User user, TrackCreateModel model) {
         this.id = model.getId();
         this.publisher = user;
@@ -136,6 +145,8 @@ public class Track {
         this.content = model.getContent();
         this.type = model.getType();
         this.jurisdiction = model.getJurisdiction();
+        this.videoUrl = model.getVideoUrl();
+
         for (PhotoModel photoModel : model.getPhotos()) {
             this.photos.add(new Photo(user, this, photoModel));
         }
@@ -148,6 +159,8 @@ public class Track {
         this.content = model.getContent();
         this.type = model.getType();
         this.jurisdiction = model.getJurisdiction();
+        this.videoUrl = model.getVideoUrl();
+
         for (PhotoModel photoModel : model.getPhotos()) {
             this.photos.add(new Photo(user, this, photoModel));
         }

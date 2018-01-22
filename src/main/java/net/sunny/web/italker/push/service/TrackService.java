@@ -121,9 +121,10 @@ public class TrackService extends BaseService {
             // 判断用户是否已经对这条动态点过赞/踩
             Compliment compliment = ComplimentFactory.findByIds(track.getId(), self.getId());
             Taunt taunt = TauntFactory.findByIds(track.getId(), self.getId());
+            trackCard.setType(track.getType());
             trackCard.setCompliment(compliment != null);
             trackCard.setTaunt(taunt != null);
-
+            trackCard.setState(Track.UPLOADED);
             trackCards.add(trackCard);
         }
 

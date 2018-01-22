@@ -26,6 +26,9 @@ public class TrackUpdateModel {
     @Expose
     private int jurisdiction;
 
+    @Expose
+    private String videoUrl;
+
     public String getId() {
         return id;
     }
@@ -64,6 +67,14 @@ public class TrackUpdateModel {
 
     public void setJurisdiction(int jurisdiction) {
         this.jurisdiction = jurisdiction;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
     }
 
     public static boolean check(TrackUpdateModel model) {

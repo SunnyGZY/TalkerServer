@@ -1,0 +1,75 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>卡车之家html5手机登陆界面源代码模板【http://www.lanrenmb.com/zt/denglu/】</title>
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta content="telephone=no" name="format-detection" />
+<link rel="stylesheet" type="text/css" href="css/sign.v2.0.css"/>
+</head>
+<body>
+
+<header>
+<a href="javascript:void(0)javascript:history.back()" class="back">返回</a>
+<h1>登录</h1>
+<a href="javascript:void(0)tel:010-56156185" class="contact">联系客服</a>
+</header>
+<section class="sign-module">
+<!--登录框--><form action="../member.php?mod=logging&amp;action=login&amp;loginsubmit=yes&amp;loginhash=Lizaz&amp;mobile=2&amp;getjson=1" method="POST" autocomplete="off" name="login" id="signin">
+<input type="hidden" name="formhash" id="formhash" value='dbdfc13f' />
+<input type="hidden" name="referer" id="referer" value="http://m.360che.com/" />
+<input type="hidden" name="fastloginfield" value="username">
+<input type="hidden" name="cookietime" value="2592000">
+
+<ul class="sign-form-list">
+<li class="user">
+<input type="text" id="username" name="username" placeholder="请输入用户名或手机号" />
+</li>
+<li class="password">
+<input type="password" id="password" name="password" placeholder="请输入密码 懒人模板制作" />
+<i id="view">开</i>
+</li>
+<li class="validate" style="display:none;" id="seccodeverify_Sv0BU">
+<input name="seccodehash" id="seccodehash" type="hidden" value="Sv0BU" />
+<input name="seccodeupdate" id="seccodeupdate" type="hidden" value="87869" />
+<input name="auth" id="auth" type="hidden" value="Sv0BU" />
+<input type="text" id="seccodeverify" name="seccodeverify" value="Sv0BU" placeholder="请输入右侧验证码" />
+<span class="validate-code"><img id="secodeimg" src="/misc.php?mod=seccode&amp;update=87869&amp;idhash=Sv0BU" /></span>
+</li>
+</ul>
+<div class="status-wrap">
+<a href="javascript:void(0)http://bbs.360che.com/m/zhmm.php">忘记密码？</a>
+<div class="error-info" id="err_info"></div>
+</div>
+<input type="submit" value="登录" />
+</form>
+
+
+<div class="other-way">
+<header>
+<span>或者</span>
+</header>
+<a href="javascript:void(0)http://bbs.360che.com/bind.php?action=qq&back_url=http://m.360che.com/" class="qq" onclick="ga('send', 'event', '登录流程', '点击第三方账号登录', 'QQ登录');">QQ登录</a>
+<a href="javascript:void(0)http://bbs.360che.com/bind.php?action=sina&back_url=http://m.360che.com/" class="weibo" onclick="ga('send', 'event', '登录流程', '点击第三方账号登录', '微博登录');">微博登录</a>
+</div>
+<a href="javascript:void(0)http://bbs.360che.com/m/register.php?back_url=http://m.360che.com/" class="to-signup">还没有账号？去注册</a>
+</section>
+<div id="alpha_cover" class="alpha-cover"></div>
+<div class="loading" id="loading">
+<span class="loading-ring"></span>
+</div>
+
+
+<div id="stats-box"></div>
+
+<script type="text/javascript">
+     /*创建于2016-06-14*/
+     var cpro_id = "u2671677";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/cm.js" type="text/javascript"></script>
+</body>
+</html>
