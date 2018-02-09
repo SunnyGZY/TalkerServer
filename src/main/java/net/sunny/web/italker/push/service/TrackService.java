@@ -47,10 +47,10 @@ public class TrackService extends BaseService {
         if (track != null)
             return ResponseModel.buildParameterError();
 
-        track = TrackFactory.add(self, model);
+        track = TrackFactory.add(self, model); // TODO: 2018/2/9 没有判断是否为空
         TrackCard trackCard = new TrackCard(track);
         trackCard.setState(Track.UPLOADED);
-        return ResponseModel.buildOk(new TrackCard(track));
+        return ResponseModel.buildOk(trackCard);
     }
 
     // 更新某条动态

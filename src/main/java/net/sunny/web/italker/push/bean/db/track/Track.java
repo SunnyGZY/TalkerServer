@@ -147,8 +147,10 @@ public class Track {
         this.jurisdiction = model.getJurisdiction();
         this.videoUrl = model.getVideoUrl();
 
-        for (PhotoModel photoModel : model.getPhotos()) {
-            this.photos.add(new Photo(user, this, photoModel));
+        if (model.getPhotos() != null) {
+            for (PhotoModel photoModel : model.getPhotos()) {
+                this.photos.add(new Photo(user, this, photoModel));
+            }
         }
     }
 

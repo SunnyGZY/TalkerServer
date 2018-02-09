@@ -40,7 +40,6 @@ public class TrackFactory {
             track.setJurisdiction(model.getJurisdiction());
             track.setType(model.getType());
 
-
             session.saveOrUpdate(track);
         });
 
