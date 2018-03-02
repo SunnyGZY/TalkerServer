@@ -22,9 +22,9 @@ public class NearbyPersonCard {
     public NearbyPersonCard(String userId, String portrait, String userName, int sex, double distance) {
         this.userId = userId;
         this.portrait = portrait;
-        this.distance = distance;
-        this.sex = sex;
         this.userName = userName;
+        this.sex = sex;
+        this.distance = distance;
     }
 
     public String getUserId() {
