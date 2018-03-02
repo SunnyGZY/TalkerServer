@@ -5,27 +5,27 @@ import com.google.gson.annotations.Expose;
 public class UserLocationModel {
 
     @Expose
-    private String longitude; // 经度
+    private double longitude; // 经度
 
     @Expose
-    private String latitude; // 维度
+    private double latitude; // 维度
 
     @Expose
     private String locationDsc; // 地址描述
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
@@ -45,8 +45,7 @@ public class UserLocationModel {
      * @return false 数据不符合
      */
     public static boolean check(UserLocationModel model) {
-        return !model.getLatitude().isEmpty()
-                || !model.getLocationDsc().isEmpty();
+        return true;
     }
 
     @Override

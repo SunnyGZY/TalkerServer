@@ -2,6 +2,7 @@ package net.sunny.web.italker.push.service;
 
 import net.sunny.web.italker.push.bean.api.base.ResponseModel;
 import net.sunny.web.italker.push.bean.api.user.UserLocationModel;
+import net.sunny.web.italker.push.bean.card.NearbyPersonCard;
 import net.sunny.web.italker.push.bean.card.UserCard;
 import net.sunny.web.italker.push.bean.card.UserLocationCard;
 import net.sunny.web.italker.push.bean.db.User;
@@ -10,6 +11,7 @@ import net.sunny.web.italker.push.factory.UserLocationFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("/location")
@@ -19,10 +21,10 @@ public class UserLocationService extends BaseService {
     @Path("/update")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public ResponseModel<UserLocationCard> putTrack(UserLocationModel model) {
+    public ResponseModel<UserLocationCard> putLocation(UserLocationModel model) {
 
         if (!UserLocationModel.check(model))
-            return ResponseModel.buildAccountError();
+            return ResponseModel.buildParameterError();
 
         User self = getSelf();
 
@@ -35,14 +37,27 @@ public class UserLocationService extends BaseService {
     }
 
     @GET
-    @Path("/nearby_person/longitude={longitude:(.*)?}&latitude={latitude:(.*)?}")
+    @Path("/nearby_person/longitude={longitude:(.*)?}&latitude={latitude:(.*)?}&distance={distance:(.*)}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public ResponseModel<List<UserCard>> members(@PathParam("longitude") @DefaultValue("0x00") String longitude,
-                                                 @PathParam("latitude") @DefaultValue("0x00") String latitude) {
+    public ResponseModel<List<NearbyPersonCard>> nearbyPersons(@PathParam("longitude") @DefaultValue("0") double longitude,
+                                                               @PathParam("latitude") @DefaultValue("0") double latitude,
+                                                               @PathParam("distance") @DefaultValue("500") double distance) {
+
+        if (longitude == 0 || latitude == 0)
+            return ResponseModel.buildParameterError();
 
         User self = getSelf();
 
-        return ResponseModel.buildOk();
+        List<UserCard> userCardList = UserLocationFactory.getNearbyPerson(longitude, latitude, distance, self);
+        List<NearbyPersonCard> nearPersonCardList = new ArrayList<>();
+        for (UserCard userCard : userCardList) {
+            double dis = ((int) userCard.getDistance()) / 100 * 100 + 100;
+
+            nearPersonCardList.add(new NearbyPersonCard(userCard.getId(), userCard.getPortrait(),
+                    userCard.getName(), userCard.getSex(), dis));
+        }
+
+        return ResponseModel.buildOk(nearPersonCardList);
     }
 }

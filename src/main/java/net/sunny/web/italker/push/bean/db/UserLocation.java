@@ -25,10 +25,10 @@ public class UserLocation {
     private String userId;
 
     @Column(nullable = false)
-    private String longitude; // 经度
+    private double longitude; // 经度
 
     @Column(nullable = false)
-    private String latitude; // 维度
+    private double latitude; // 维度
 
     @Column
     private String locationDsc; // 地址描述
@@ -36,6 +36,9 @@ public class UserLocation {
     @CreationTimestamp
     @Column(nullable = false)
     private LocalDateTime updateTime = LocalDateTime.now();
+
+    // 计算距离时临时存储变量
+    private double distance;
 
     public UserLocation() {
     }
@@ -72,19 +75,19 @@ public class UserLocation {
         this.userId = userId;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
@@ -104,5 +107,11 @@ public class UserLocation {
         this.updateTime = time;
     }
 
+    public double getDistance() {
+        return distance;
+    }
 
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
 }

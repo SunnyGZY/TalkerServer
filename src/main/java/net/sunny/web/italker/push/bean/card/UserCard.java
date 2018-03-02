@@ -33,6 +33,13 @@ public class UserCard {
     private int followState;
     @Expose
     private LocalDateTime modifyAt = LocalDateTime.now();
+    @Expose
+    private double longitude;
+    @Expose
+    private double latitude;
+
+    // 计算距离时临时存储变量
+    private double distance;
 
     public UserCard(final User user) {
         this(user, User.NOT_FOLLOW);
@@ -135,5 +142,29 @@ public class UserCard {
 
     public void setModifyAt(LocalDateTime modifyAt) {
         this.modifyAt = modifyAt;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 }
