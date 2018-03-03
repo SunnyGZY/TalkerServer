@@ -56,7 +56,7 @@ public class UserLocationFactory {
                 userCard.setDistance(userLocation.getDistance());
                 userCardList.add(userCard);
             } else {
-                for (int i = 0; i <= userCardList.size(); i++) {
+                for (int i = 0; i < userCardList.size(); i++) {
                     if (userLocation.getDistance() <= userCardList.get(i).getDistance()) {
                         User user = UserFactory.findById(userLocation.getUserId());
                         UserCard userCard = new UserCard(user);
