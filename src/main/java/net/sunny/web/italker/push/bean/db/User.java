@@ -86,6 +86,9 @@ public class User implements Principal {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Group> groups = new HashSet<>();
 
+    @Column(columnDefinition="INT default 0")
+    private int isPubLoca;
+
     public User() {
     }
 
@@ -212,5 +215,13 @@ public class User implements Principal {
 
     public void setGroups(Set<Group> groups) {
         this.groups = groups;
+    }
+
+    public int getIsPubLoca() {
+        return isPubLoca;
+    }
+
+    public void setIsPubLoca(int isPubLoca) {
+        this.isPubLoca = isPubLoca;
     }
 }

@@ -37,6 +37,8 @@ public class UserCard {
     private double longitude;
     @Expose
     private double latitude;
+    @Expose
+    private boolean isPubLoca;
 
     // 计算距离时临时存储变量
     private double distance;
@@ -54,6 +56,7 @@ public class UserCard {
         this.sex = user.getSex();
         this.modifyAt = user.getUpdateAt();
         this.followState = followState;
+        this.isPubLoca = user.getIsPubLoca() != 0;
 
         // TODO 得到关注人和粉丝的数量
         // user.getFollowers().size(); // 懒加载会报错
@@ -166,5 +169,13 @@ public class UserCard {
 
     public void setDistance(double distance) {
         this.distance = distance;
+    }
+
+    public boolean isPubLoca() {
+        return isPubLoca;
+    }
+
+    public void setPubLoca(boolean pubLoca) {
+        isPubLoca = pubLoca;
     }
 }

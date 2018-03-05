@@ -50,6 +50,9 @@ public class UserLocationFactory {
         for (UserLocation userLocation : userLocationSet) {
             if (userCardList.size() == 0) {
                 User user = UserFactory.findById(userLocation.getUserId());
+                if (user.getIsPubLoca() == 0)
+                    continue;
+
                 UserCard userCard = new UserCard(user);
                 userCard.setLongitude(userLocation.getLongitude());
                 userCard.setLatitude(userLocation.getLatitude());
@@ -59,6 +62,9 @@ public class UserLocationFactory {
                 for (int i = 0; i < userCardList.size(); i++) {
                     if (userLocation.getDistance() <= userCardList.get(i).getDistance()) {
                         User user = UserFactory.findById(userLocation.getUserId());
+                        if (user.getIsPubLoca() == 0)
+                            break;
+
                         UserCard userCard = new UserCard(user);
                         userCard.setLongitude(userLocation.getLongitude());
                         userCard.setLatitude(userLocation.getLatitude());

@@ -7,6 +7,7 @@ import net.sunny.web.italker.push.bean.card.UserCard;
 import net.sunny.web.italker.push.bean.card.UserLocationCard;
 import net.sunny.web.italker.push.bean.db.User;
 import net.sunny.web.italker.push.bean.db.UserLocation;
+import net.sunny.web.italker.push.factory.UserFactory;
 import net.sunny.web.italker.push.factory.UserLocationFactory;
 
 import javax.ws.rs.*;
@@ -27,6 +28,11 @@ public class UserLocationService extends BaseService {
             return ResponseModel.buildParameterError();
 
         User self = getSelf();
+        self.setIsPubLoca(1);
+        User user = UserFactory.update(self);
+
+        if (user == null)
+            return ResponseModel.buildParameterError();
 
         UserLocation userLocation = UserLocationFactory.update(self, model);
         if (userLocation != null) {
@@ -59,5 +65,25 @@ public class UserLocationService extends BaseService {
         }
 
         return ResponseModel.buildOk(nearPersonCardList);
+    }
+
+    @POST
+    @Path("/alert_juri_dir/isPubDir={isPubDir:(.*?)}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public ResponseModel alertJuri(@PathParam("isPubDir") int isPubDir) {
+
+        if (isPubDir != 0 && isPubDir != 1)
+            return ResponseModel.buildParameterError();
+
+        User self = getSelf();
+        self.setIsPubLoca(isPubDir);
+        User user = UserFactory.update(self);
+
+        if (user != null) {
+            return ResponseModel.buildOk(true);
+        } else {
+            return ResponseModel.buildOk(false);
+        }
     }
 }
